@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Birthday Card</title>
+    <link rel="stylesheet" href="Birthdaycard.css">
+    <script>
+      /*background color change*/
+      function white(){
+        document.getElementById("cont").style.backgroundColor = "white";
+      }
+
+      function blue(){
+        document.getElementById("cont").style.backgroundColor = "lightblue";
+      }
+
+      function yellow(){
+        document.getElementById("cont").style.backgroundColor = "#FFFF99";
+      }
+
+      function green(){
+        document.getElementById("cont").style.backgroundColor = "#90EE90";
+      }
+
+      function pink(){
+        document.getElementById("cont").style.backgroundColor = "#ff91a4";
+      }
+
+      function orange(){
+        document.getElementById("cont").style.backgroundColor = "#FFA500";
+      }
+
+
+      function saveContent(){
+        var n = document.getElementById("name");
+        var ag = document.getElementById("age");
+        var w = document.getElementById("word");
+        var a = document.getElementById("address");
+        var r = document.getElementById("rsvp");
+
+        localStorage.setItem("name", n.value);
+        localStorage.setItem("age", ag.value);
+        localStorage.setItem("word", w.value);
+        localStorage.setItem("address", a.value);
+        localStorage.setItem("rsvp", r.value);
+        alert("Content Saved!")
+        window.location.reload();
+      }
+
+      function loadContent(){
+        var n = document.getElementById("name");
+        var ag = document.getElementById("age");
+        var w = document.getElementById("word");
+        var a = document.getElementById("address");
+        var r = document.getElementById("rsvp");
+
+        n.value = localStorage.getItem("name");
+        ag.value = localStorage.getItem("age");
+        w.value = localStorage.getItem("word");
+        a.value = localStorage.getItem("address");
+        r.value = localStorage.getItem("rsvp");
+      }
+
+      function fillContent(){
+        var n = document.getElementById("name");
+        var ag = document.getElementById("age");
+        var w = document.getElementById("word");
+        var a = document.getElementById("address");
+        var r = document.getElementById("rsvp");
+
+        n1.innerHTML = localStorage.getItem("name");
+        age1.innerHTML = localStorage.getItem("age");
+        wording.innerHTML = localStorage.getItem("word");
+        add1.innerHTML = localStorage.getItem("address");
+        rsvp1.innerHTML = localStorage.getItem("rsvp");
+      }
+
+      </script>
+  </head>
+  <body onload="fillContent()">
+  <div class="maincontainer">
+      <div class="side"> <!-- background colorchange nav-->
+        <label>Pick Your Background Color</label>
+        <br><br>
+        <button type="button" onclick="white()">White</button>
+        <br>
+        <button type="button" onclick="blue()">Blue</button>
+        <br>
+        <button type="button" onclick="yellow()">Yellow</button>
+        <br>
+        <button type="button" onclick="green()">Green</button>
+        <br>
+        <button type="button" onclick="pink()">Pink</button>
+        <br>
+        <button type="button" onclick="orange()">Orange</button>
+        <br><br>
+
+        <div class="input">
+          <label>Insert info below:</label>
+          <br><br>
+          <input type="text" placeholder="Name + Wording" id="name">
+          <input type="text" placeholder="Insert Age" id="age">
+          <input type="text" placeholder="Add any wording" id="word">
+          <input type="text" placeholder="Place" id="address">
+          <input type="text" placeholder="Enter RSVP" id="rsvp">
+          <br><br>
+          <button onclick="saveContent()">Save</button>
+          <button onclick="loadContent()">Load</button>
+          <br></br>
+          <div class="back1">
+          <a href="InformalPage.html" >Back</a>
+          </div>
+        </div>
+
+      </div>
+
+
+
+    <div class="card">
+      <div class="outercontainer">
+
+      <div class="container" id="cont">
+        <div class="text">
+        <h2 id="n1" placeholder="Name + Wording" class="text"></h2>
+        <h1 id="age1" placeholder="Insert Age" class="text"></h1>
+        <hr></hr>
+        <p id="wording" placeholder="Add any wording" class="text"></p>
+        <p id="add1" placeholder="Place : " class="text"></p>
+        <p id=rsvp1 placeholder="RSVP : " class="text"></p>
+        <img src="pink.png">
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+
+  </body>
+
+
+</html>

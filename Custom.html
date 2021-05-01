@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Custom Card</title>
+    <link rel="stylesheet" href="Custom.css">
+    <script>
+      /*background color change*/
+      function white(){
+        document.getElementById("cont").style.backgroundColor = "white";
+      }
+
+      function blue(){
+        document.getElementById("cont").style.backgroundColor = "lightblue";
+      }
+
+      function yellow(){
+        document.getElementById("cont").style.backgroundColor = "#FFFF99";
+      }
+
+      function green(){
+        document.getElementById("cont").style.backgroundColor = "#90EE90";
+      }
+
+      function pink(){
+        document.getElementById("cont").style.backgroundColor = "#ff91a4";
+      }
+
+      function orange(){
+        document.getElementById("cont").style.backgroundColor = "#FFA500";
+      }
+
+
+      function saveContent(){
+        var e = document.getElementById("event");
+        var nn = document.getElementById("name1");
+        var nn2 = document.getElementById("name2");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var r = document.getElementById("rsvp");
+
+        localStorage.setItem("event", e.value);
+        localStorage.setItem("name1", nn.value);
+        localStorage.setItem("name2", nn2.value);
+        localStorage.setItem("date", d.value);
+        localStorage.setItem("time", t.value);
+        localStorage.setItem("rsvp", r.value);
+        alert("Content Saved!")
+        window.location.reload();
+      }
+
+      function loadContent(){
+        var e = document.getElementById("event");
+        var nn = document.getElementById("name1");
+        var nn2 = document.getElementById("name2");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var r = document.getElementById("rsvp");
+
+        e.value = localStorage.getItem("event");
+        nn.value = localStorage.getItem("name1");
+        nn2.value = localStorage.getItem("name2");
+        d.value = localStorage.getItem("date");
+        t.value = localStorage.getItem("time");
+        r.value = localStorage.getItem("rsvp");
+      }
+
+      function fillContent(){
+        var e = document.getElementById("event");
+        var nn = document.getElementById("name1");
+        var nn2 = document.getElementById("name2");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var r = document.getElementById("rsvp");
+
+        e1.innerHTML = localStorage.getItem("event");
+        n1.innerHTML = localStorage.getItem("name1");
+        n2.innerHTML = localStorage.getItem("name2");
+        date1.innerHTML = localStorage.getItem("date");
+        time1.innerHTML = localStorage.getItem("time");
+        rsvp1.innerHTML = localStorage.getItem("rsvp");
+      }
+
+      /*dragdrop fucntion*/
+      function allowDrop(ev){
+        ev.preventDefault();
+      }
+
+      function drag(ev){
+        ev.dataTransfer.setData("text", ev.target.id);
+      }
+
+      function drop(ev){
+        ev.preventDefault();
+        var data = ev.dataTransfer.getData("text");
+        var isLeft = "drag1" == data;
+        var nodeCopy = document.getElementById(data).cloneNode(true);
+        nodeCopy.id = "img" + ev.target.id;
+        if(!isLeft){
+          sourceCode = document.getElementById(data);
+          sourceNode.parentNode.removeChild(sourceNode);
+        }
+        ev.target.appendChild(nodeCopy);
+        ev.stopPropagation();
+        return false;
+      }
+
+      </script>
+  </head>
+  <body onload="fillContent()">
+  <div class="maincontainer">
+      <div class="side"> <!-- background colorchange nav-->
+        <label>Dragable Logo</label>
+        <br><br>
+        <img src="ring.png" id="drag1" draggable="true" ondragstart="drag(event)">
+        <br><br>
+        <label>Pick Your Background Color</label>
+        <br><br>
+        <button type="button" onclick="white()">White</button>
+        <br>
+        <button type="button" onclick="blue()">Blue</button>
+        <br>
+        <button type="button" onclick="yellow()">Yellow</button>
+        <br>
+        <button type="button" onclick="green()">Green</button>
+        <br>
+        <button type="button" onclick="pink()">Pink</button>
+        <br>
+        <button type="button" onclick="orange()">Orange</button>
+        <br><br>
+
+        <div class="input">
+          <label>Insert info below:</label>
+          <br><br>
+          <input type="text" placeholder="Event" id="event">
+          <input type="text" placeholder="Name1" id="name1">
+          <input type="text" placeholder="Name2" id="name2">
+          <input type="text" placeholder="Date" id="date">
+          <input type="text" placeholder="Time" id="time">
+          <input type="text" placeholder="RSVP" id="rsvp">
+          <br><br>
+          <button onclick="saveContent()">Save</button>
+          <button onclick="loadContent()">Load</button>
+          <br></br>
+          <div class="back1">
+          <a href="MainPage.html" >Back</a>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+
+
+    <div class="card">
+
+
+      <div class="container" id="cont">
+        <div id="dragdrop" ondrop="drop(event)" ondragover="allowDrop(event)">
+        </div>
+        <div class="text">
+        <h2 id="e1" placeholder="Event" class="text1"></h2>
+        <h3 id="n1" placeholder="Name1" class="text1"></h3>
+        <p> & </p>
+        <h3 id="n2" placeholder="Name2" class="text1"></h3>
+        <h6 id="date1" placeholder="Date : " class="text1"></h6>
+        <h6 id=time1 placeholder="Time : " class="text1"></h6>
+        <h6 id=rsvp1 placeholder="RSVP : " class="text1"></h6>
+
+        </div>
+        </div>
+
+      </div>
+    </div>
+
+
+
+
+  </body>
+
+
+</html>

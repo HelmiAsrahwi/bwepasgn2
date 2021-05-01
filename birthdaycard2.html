@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Birthday Card</title>
+    <link rel="stylesheet" href="birthdaycard2.css">
+    <script src="https://use.edgefonts.net/berkshire-swash:n4:all.js"></script>
+    <script>
+
+    function white(){
+      document.getElementById("frame1").style.backgroundColor = "white";
+    }
+
+    function blue(){
+      document.getElementById("frame1").style.backgroundColor = "lightblue";
+    }
+
+    function yellow(){
+      document.getElementById("frame1").style.backgroundColor = "#FFFF99";
+    }
+
+    function green(){
+      document.getElementById("frame1").style.backgroundColor = "#90EE90";
+    }
+
+    function pink(){
+      document.getElementById("frame1").style.backgroundColor = "#ff91a4";
+    }
+
+    function orange(){
+      document.getElementById("frame1").style.backgroundColor = "#FFA500";
+    }
+
+
+
+      function saveContent(){
+        var h = document.getElementById("heading");
+        var n = document.getElementById("name");
+        var e = document.getElementById("event");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var p = document.getElementById("place");
+        var r = document.getElementById("rsvp");
+
+
+
+        localStorage.setItem("heading", h.value);
+        localStorage.setItem("name", n.value);
+        localStorage.setItem("event", e.value);
+        localStorage.setItem("date", d.value);
+        localStorage.setItem("time", t.value);
+        localStorage.setItem("place", p.value);
+        localStorage.setItem("rsvp", r.value);
+        alert("Content Saved!")
+        window.location.reload();
+
+      }
+
+      function loadContent(){
+        var h = document.getElementById("heading");
+        var n = document.getElementById("name");
+        var e = document.getElementById("event");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var p = document.getElementById("place");
+        var r = document.getElementById("rsvp");
+
+
+        h.value = localStorage.getItem("heading");
+        n.value = localStorage.getItem("name");
+        e.value = localStorage.getItem("event");
+        d.value = localStorage.getItem("date");
+        t.value = localStorage.getItem("time");
+        p.value = localStorage.getItem("place");
+        r.value = localStorage.getItem("rsvp");
+
+      }
+
+      function fillContent(){
+        var h = document.getElementById("heading");
+        var n = document.getElementById("name");
+        var e = document.getElementById("event");
+        var d = document.getElementById("date");
+        var t = document.getElementById("time");
+        var p = document.getElementById("place");
+        var r = document.getElementById("rsvp");
+
+        head1.innerHTML = localStorage.getItem("heading");
+        n1.innerHTML = localStorage.getItem("name");
+        e1.innerHTML = localStorage.getItem("event");
+        d1.innerHTML = localStorage.getItem("date");
+        t1.innerHTML = localStorage.getItem("time");
+        p1.innerHTML = localStorage.getItem("place");
+        rsvp1.innerHTML = localStorage.getItem("rsvp");
+      }
+
+      </script>
+  </head>
+  <body onload="fillContent()">
+    <div class="container">
+    <div class="side">
+      <label>Pick Your Background Color</label>
+      <br><br>
+      <button type="button" onclick="white()">White</button>
+      <br>
+      <button type="button" onclick="blue()">Blue</button>
+      <br>
+      <button type="button" onclick="yellow()">Yellow</button>
+      <br>
+      <button type="button" onclick="green()">Green</button>
+      <br>
+      <button type="button" onclick="pink()">Pink</button>
+      <br>
+      <button type="button" onclick="orange()">Orange</button>
+      <br><br>
+
+      <div class="input">
+        <label>Insert info below:</label>
+        <br><br>
+        <input type="text" placeholder="Enter Heading" id="heading">
+        <input type="text" placeholder="Enter Name" id="name">
+        <input type="text" placeholder="Enter Event Type" id="event">
+        <input type="text" placeholder="Eg. Date  :" id="date">
+        <input type="text" placeholder="Eg. Time  :" id="time">
+        <input type="text" placeholder="Eg. Place :" id="place">
+        <input type="text" placeholder="Eg. RSVP  :" id="rsvp">
+        <br><br>
+        <button onclick="saveContent()">Save</button>
+        <button onclick="loadContent()">Load</button>
+        <br><br>
+        <div class="back1">
+        <a href="InformalPage.html" >Back</a>
+        </div>
+
+      </div>
+    </div>
+    <div class="outer">
+
+  <div class="frame" id="frame1">
+    <h1 id="head1" placeholder="You Are Invited To" class="text"></h1>
+    <h2 id="n1" placeholder="Enter Name" class="text"></h2>
+    <hr></hr>
+    <h4 id="e1" placeholder="Birthday Party" class="text"></h4><br>
+    <p id="d1" placeholder="Date      :   6th September 2021 " class="text"></p>
+    <hr class="hr"></hr>
+    <p id="t1" placeholder="Time      :   7pm - 10pm" class="text"></p>
+    <hr class="hr"></hr>
+    <p id ="p1" placeholder="Place    :  Empire Hotel" class="text"></p>
+    <hr class="hr"></hr>
+    <p id="rsvp1" placeholder="RSVP   : +673 8888888" class="text"></p>
+    <hr class="hr"></hr>
+
+  </div>
+
+</div>
+</div>
+
+  </body>
+
+</html>
